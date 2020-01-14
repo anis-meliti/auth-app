@@ -1,5 +1,3 @@
-'use strict';
-
 const rootReducer = (state, { type, payload }) => {
   switch (type) {
     default:
