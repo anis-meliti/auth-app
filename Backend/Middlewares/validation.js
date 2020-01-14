@@ -1,7 +1,7 @@
 'use strict';
 import { check, validationResult } from 'express-validator';
 
-export const credvalidation = () => [
+export const credValidation = () => [
   check('login', 'this field is required!').notEmpty(),
   check('password', 'this field is required').notEmpty(),
   check('password', 'this field require min length 6 char').isLength({ min: 6 })
