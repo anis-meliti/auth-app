@@ -11,5 +11,6 @@ Router.post(
   validate,
   registerController.register
 );
+Router.post('/login', credValidation(), validate, registerController.logIn);
 
 export default Router;
