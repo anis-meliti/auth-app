@@ -1,3 +1,11 @@
 {
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^5.0.2"
+  },
+  "scripts": {
+    "front": "cd client && yarn start",
+    "back": "cd Backend && yarn start",
+    "start": "concurrently \" yarn run front \" \"yarn run back\""
+  }
 }
