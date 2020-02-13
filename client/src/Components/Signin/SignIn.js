@@ -1,0 +1,52 @@
+import React from 'react';
+import { Container, Col, Row, Form, Card, Input, Button } from 'reactstrap';
+import './Signin.css';
+import { Link } from 'react-router-dom';
+const SignIn = () => {
+  return (
+    <div className='login-div page-header'>
+      <div className='filter' />
+      <Container>
+        <Row>
+          <Col className='ml-auto mr-auto' lg='6'>
+            <Card className='card-body mt-5 ml-auto mr-auto text-muted'>
+              <h3 className='title mx-auto'>Welcome</h3>
+              <p className='text-center'>Login into your account</p>
+              <hr />
+              <Form className='register-form '>
+                <label htmlFor='login'>Login</label>
+                <Input
+                  placeholder='Login'
+                  type='text'
+                  name='login'
+                  // onChange={onChangeHandler}
+                />
+                <label htmlFor='login'>Password</label>
+                <Input
+                  placeholder='Password'
+                  type='password'
+                  name='password'
+                  // onChange={onChangeHandler}
+                />
+
+                <Button
+                  block
+                  className='btn-round mt-5'
+                  color='danger'
+                  // onClick={addUser}
+                >
+                  Login
+                </Button>
+              </Form>
+              <span className='text-muted text-center'>
+                Searching?<Link to='/register'>Create an account</Link>?
+              </span>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+};
+
+export default SignIn;
