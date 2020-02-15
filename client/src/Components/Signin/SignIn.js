@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import './Signin.css';
-import { login } from '../../JS/actions';
+import { loginUser } from '../../JS/actions';
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,12 @@ const SignIn = () => {
       ...cred,
       [e.target.name]: e.target.value
     });
-  const addUser = () => dispatch(login(cred));
+  const addUser = () => {
+    const { login, password } = cred;
+    if (!login.length) return alert('Required field!');
+    if (password.length < 6) return alert('password min length is 6 char');
+    dispatch(loginUser(cred));
+  };
   return (
     <div className='login-div page-header'>
       <div className='filter' />

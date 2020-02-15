@@ -24,7 +24,7 @@ export const register = credentials => async dispatch => {
   }
 };
 
-export const login = credentials => async dispatch => {
+export const loginUser = credentials => async dispatch => {
   try {
     const loginRes = await axios.post('/login', credentials);
     loginRes.status === 200 &&
