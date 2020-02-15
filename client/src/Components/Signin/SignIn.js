@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Col, Row, Form, Card, Input, Button } from 'reactstrap';
-import './Signin.css';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import './Signin.css';
+import { login } from '../../JS/actions';
+
 const SignIn = () => {
+  const dispatch = useDispatch();
+  const [cred, setCred] = useState({
+    login: '',
+    password: ''
+  });
+
+  const onChangeHandler = e =>
+    setCred({
+      ...cred,
+      [e.target.name]: e.target.value
+    });
+  const addUser = () => dispatch(login(cred));
   return (
     <div className='login-div page-header'>
       <div className='filter' />
@@ -19,21 +35,21 @@ const SignIn = () => {
                   placeholder='Login'
                   type='text'
                   name='login'
-                  // onChange={onChangeHandler}
+                  onChange={onChangeHandler}
                 />
                 <label htmlFor='login'>Password</label>
                 <Input
                   placeholder='Password'
                   type='password'
                   name='password'
-                  // onChange={onChangeHandler}
+                  onChange={onChangeHandler}
                 />
 
                 <Button
                   block
                   className='btn-round mt-5'
                   color='danger'
-                  // onClick={addUser}
+                  onClick={addUser}
                 >
                   Login
                 </Button>

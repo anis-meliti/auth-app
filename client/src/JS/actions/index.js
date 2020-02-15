@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { REGISTER_FAIL, REGISTER_SUCCESS } from '../constants/actions-types';
+import {
+  REGISTER_FAIL,
+  REGISTER_SUCCESS,
+  LOGIN_FAIL,
+  LOGIN_SUCCESS
+} from '../constants/actions-types';
 
 export const register = credentials => async dispatch => {
   try {
@@ -15,6 +20,22 @@ export const register = credentials => async dispatch => {
     dispatch({
       type: REGISTER_FAIL,
       payload: errors.response.data.msg
+    });
+  }
+};
+
+export const login = credentials => async dispatch => {
+  try {
+    const loginRes = await axios.post('/login', credentials);
+    loginRes.status === 200 &&
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: loginRes.data
+      });
+  } catch (error) {
+    dispatch({
+      type: LOGIN_FAIL,
+      payload: error.response.data.errors
     });
   }
 };

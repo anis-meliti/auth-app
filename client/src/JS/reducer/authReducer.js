@@ -1,4 +1,9 @@
-import { REGISTER_SUCCESS, REGISTER_FAIL } from '../constants/actions-types';
+import {
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL
+} from '../constants/actions-types';
 const initialState = {
   isAuth: false,
   data: [],
@@ -16,6 +21,18 @@ const authReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         register: 'fail',
+        errors: payload
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isAuth: true,
+        data: payload
+      };
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        isAuth: false,
         errors: payload
       };
     default:
