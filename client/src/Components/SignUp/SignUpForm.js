@@ -23,8 +23,6 @@ const SignUpForm = () => {
   return regist === 'success' ? (
     <Redirect to='/login' />
   ) : (
-    // ) : regist === 'fail' ? (
-    //   <Redirect to='/' />
     <div className='main-div page-header'>
       <div className='filter' />
       <Container>
@@ -33,9 +31,7 @@ const SignUpForm = () => {
             <Card className='card-register mt-5 ml-auto mr-auto'>
               <h3 className='title mx-auto'>Welcome</h3>
               {registerError && (
-                <h3 className='title' color='danger'>
-                  register fail
-                </h3>
+                <h3 className='title'>Register fail! Please try again</h3>
               )}
               <Form className='register-form' name='formCred'>
                 <label htmlFor='login'>Login</label>

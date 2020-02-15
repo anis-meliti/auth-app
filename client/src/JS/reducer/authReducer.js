@@ -5,7 +5,6 @@ const initialState = {
   errors: null
 };
 const authReducer = (state = initialState, { type, payload }) => {
-  console.log('TCL: authReducer -> payload', payload);
   switch (type) {
     case REGISTER_SUCCESS:
       return {
