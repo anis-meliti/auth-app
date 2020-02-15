@@ -1,20 +1,23 @@
 import { REGISTER_SUCCESS, REGISTER_FAIL } from '../constants/actions-types';
 const initialState = {
   isAuth: false,
-  data: []
+  data: [],
+  errors: null
 };
 const authReducer = (state = initialState, { type, payload }) => {
+  console.log('TCL: authReducer -> payload', payload);
   switch (type) {
     case REGISTER_SUCCESS:
       return {
         ...state,
-        register: 'sucess',
+        register: 'success',
         data: payload
       };
     case REGISTER_FAIL:
       return {
         ...state,
-        register: 'fail'
+        register: 'fail',
+        errors: payload
       };
     default:
       return state;

@@ -9,6 +9,7 @@ import { jwtSecret } from '../config/default.json';
 const registerController = {
   register: async (req, res) => {
     const { login, password } = req.body;
+
     try {
       const searchResult = await User.findOne({ login });
       if (searchResult) return res.status(400).json({ msg: 'bad credential!' });

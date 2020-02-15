@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Col, Row, Form, Card, Input, Button } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import './Signup.css';
 import { register } from '../../JS/actions';
@@ -17,8 +18,13 @@ const SignUpForm = () => {
   const onChangeHandler = e =>
     setCred({ ...cred, [e.target.name]: e.target.value });
   const regist = useSelector(state => state.authReducer.register);
+  const registerError = useSelector(state => state.authReducer.errors);
 
-  return (
+  return regist === 'success' ? (
+    <Redirect to='/login' />
+  ) : (
+    // ) : regist === 'fail' ? (
+    //   <Redirect to='/' />
     <div className='main-div page-header'>
       <div className='filter' />
       <Container>
@@ -26,7 +32,11 @@ const SignUpForm = () => {
           <Col className='ml-auto mr-auto' lg='6'>
             <Card className='card-register mt-5 ml-auto mr-auto'>
               <h3 className='title mx-auto'>Welcome</h3>
-              {regist && <h3 className='title'>register fail</h3>}
+              {registerError && (
+                <h3 className='title' color='danger'>
+                  register fail
+                </h3>
+              )}
               <Form className='register-form' name='formCred'>
                 <label htmlFor='login'>Login</label>
                 <Input
