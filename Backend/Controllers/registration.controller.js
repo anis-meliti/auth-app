@@ -54,6 +54,9 @@ const registerController = {
     } catch (error) {
       res.json({ error: error });
     }
+  },
+  current: (req, res) => {
+    res.json(req.user);
   }
 };
 
