@@ -2,8 +2,7 @@
 import express from 'express';
 import { validate, credValidation } from '../Middlewares/validation';
 import registerController from '../Controllers/registration.controller';
-import isAuth from '../Middlewares/passport-Setup';
-import passport from 'passport';
+import { isAuth } from '../Middlewares/passport-Setup';
 
 const Router = express.Router();
 
@@ -14,10 +13,6 @@ Router.post(
   registerController.register
 );
 Router.post('/login', credValidation(), validate, registerController.logIn);
-Router.get(
-  '/user',
-  passport.authenticate('jwt', { session: false }),
-  registerController.current
-);
+Router.get('/user', isAuth(), registerController.current);
 
 export default Router;
